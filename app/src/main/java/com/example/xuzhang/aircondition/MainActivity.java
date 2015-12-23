@@ -5,11 +5,28 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import com.example.xuzhang.aircondition.domain.PM25;
+import com.example.xuzhang.aircondition.service.AirServiceClient;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MyActivity";
+
+    private EditText cityEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +43,33 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        cityEditText = (EditText) findViewById(R.id.edit_message);
+
+        findViewById(R.id.query_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                queryPM25Data();
+            }
+        });
+    }
+
+    private void queryPM25Data() {
+        final String cityName = cityEditText.getText().toString();
+
+        if(!TextUtils.isEmpty(cityName)) {
+            AirServiceClient.getInstance().queryAirConditionData(new Callback<List<PM25>>() {
+                @Override
+                public void onResponse(Response<List<PM25>> response, Retrofit retrofit) {
+                    Log.i(TAG, "i am comming");
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.i(TAG, "i am lost");
+                }
+            });
+        }
     }
 
     @Override

@@ -23,3 +23,4 @@ UnitTest/velocity.log
 google-play-services_lib_v9/project.properties
 local.properties
 app/src/main/project.properties
+app/src/main/assets/*.properties
