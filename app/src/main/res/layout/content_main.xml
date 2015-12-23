@@ -13,8 +13,23 @@
     tools:showIn="@layout/activity_main"
     tools:context="com.example.xuzhang.aircondition.MainActivity">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical">
+        <TextView
+            android:text="Find her location air condition"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText android:id="@+id/edit_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_message" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/query_text"/>
+    </LinearLayout>
 </RelativeLayout>

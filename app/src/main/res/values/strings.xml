@@ -1,4 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AirCondition</string>
     <string name="action_settings">Settings</string>
+    <string name="edit_message">city name</string>
+    <string name="query_text">search</string>
 </resources>
