@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
             AirServiceClient.getInstance().queryAirConditionData(new Callback<List<PM25>>() {
                 @Override
                 public void onResponse(Response<List<PM25>> response, Retrofit retrofit) {
-                    Log.i(TAG, "i am comming");
+                    List<PM25> pms = response.body();
+                    Log.i(TAG, pms.get(0).toString());
                 }
 
                 @Override
